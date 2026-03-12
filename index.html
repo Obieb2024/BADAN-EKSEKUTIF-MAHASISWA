@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Oprec BEM 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="glow-orb orb-red"></div>
+    <div class="glow-orb orb-gold"></div>
+
+    <div class="container">
+        
+        <div class="logo-container">
+            <img src="bem.jpeg" alt="Logo BEM POLSUB" class="logo-img">
+        </div>
+
+        <div class="header">
+            <div class="badge"><i class="fa-solid fa-bolt" style="margin-right: 6px;"></i> OPEN RECRUITMENT</div>
+            <h1>BEM KEMA POLSUB 2026</h1>
+            <p class="subtitle">Informasi pendaftaran. Silakan pilih menu di bawah.</p>
+        </div>
+
+        <div class="menu-wrapper">
+            <a href="#" class="card card-red" onclick="bukaLink('drive', event)">
+                <div class="icon-box"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="card-content">
+                    <div class="card-title">Tata Cara & Syarat</div>
+                    <div class="card-desc">Panduan lengkap pendaftaran</div>
+                </div>
+                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+
+            <a href="#" class="card card-gold" onclick="bukaLink('gform', event)">
+                <div class="icon-box"><i class="fa-solid fa-pen-to-square"></i></div>
+                <div class="card-content">
+                    <div class="card-title">Formulir Pendaftaran</div>
+                    <div class="card-desc">Isi data dirimu dengan benar</div>
+                </div>
+                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+
+            <a href="#" class="card card-admin" onclick="bukaLink('admin1', event)">
+                <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="card-content">
+                    <div class="card-title">Hubungi Admin 1</div>
+                    <div class="card-desc">Pusat bantuan utama</div>
+                </div>
+                <div class="arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 14px;"></i></div>
+            </a>
+
+            <a href="#" class="card card-admin" onclick="bukaLink('admin2', event)">
+                <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="card-content">
+                    <div class="card-title">Hubungi Admin 2</div>
+                    <div class="card-desc">Pusat bantuan alternatif</div>
+                </div>
+                <div class="arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 14px;"></i></div>
+            </a>
+        </div>
+
+        <div class="footer">
+            Sistem Informasi Pendaftaran Anggota BEM KEMA POLSUB © 2026 <span>BEM KEMA POLSUB</span>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
