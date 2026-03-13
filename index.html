@@ -1,75 +1,41 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Oprec BEM 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+// --- LOGIKA VISITOR COUNTER (Simulasi Front-End) ---
+document.addEventListener("DOMContentLoaded", () => {
+    const countElement = document.getElementById("view-count");
     
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    // Angka dasar fiktif agar tidak mulai dari 0 (bisa Anda ubah)
+    const baseCount = 1250; 
 
-    <div class="glow-orb orb-red"></div>
-    <div class="glow-orb orb-gold"></div>
+    // Mengecek apakah pengunjung ini sudah pernah membuka web sebelumnya
+    let localVisits = localStorage.getItem("bem_page_views");
 
-    <div class="container">
-        
-        <div class="logo-container">
-            <img src="bem.jpeg" alt="Logo BEM POLSUB" class="logo-img">
-        </div>
+    if (localVisits) {
+        // Jika sudah pernah, tambah 1
+        localVisits = parseInt(localVisits) + 1;
+    } else {
+        // Jika baru pertama kali buka, mulai dari 1
+        localVisits = 1; 
+    }
 
-        <div class="header">
-            <div class="badge"><i class="fa-solid fa-bolt" style="margin-right: 6px;"></i> OPEN RECRUITMENT</div>
-            <h1>BEM KEMA POLSUB 2026</h1>
-            <p class="subtitle">Informasi pendaftaran. Silakan pilih menu di bawah.</p>
-        </div>
+    // Simpan kembali ke penyimpanan browser
+    localStorage.setItem("bem_page_views", localVisits);
 
-        <div class="menu-wrapper">
-            <a href="#" class="card card-red" onclick="bukaLink('drive', event)">
-                <div class="icon-box"><i class="fa-solid fa-file-pdf"></i></div>
-                <div class="card-content">
-                    <div class="card-title">Tata Cara & Syarat</div>
-                    <div class="card-desc">Panduan lengkap pendaftaran</div>
-                </div>
-                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
+    // Hitung total (Angka Dasar + Kunjungan Lokal)
+    const totalViews = baseCount + localVisits;
 
-            <a href="#" class="card card-gold" onclick="bukaLink('gform', event)">
-                <div class="icon-box"><i class="fa-solid fa-pen-to-square"></i></div>
-                <div class="card-content">
-                    <div class="card-title">Formulir Pendaftaran</div>
-                    <div class="card-desc">Isi data dirimu dengan benar</div>
-                </div>
-                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
+    // Animasi angka berjalan (Count Up Animation)
+    let currentCount = baseCount;
+    const duration = 1500; // 1.5 detik
+    const increment = Math.ceil(localVisits / (duration / 30));
 
-            <a href="#" class="card card-admin" onclick="bukaLink('admin1', event)">
-                <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
-                <div class="card-content">
-                    <div class="card-title">Hubungi Admin 1</div>
-                    <div class="card-desc">Pusat bantuan utama</div>
-                </div>
-                <div class="arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 14px;"></i></div>
-            </a>
+    const counterInterval = setInterval(() => {
+        currentCount += increment;
+        if (currentCount >= totalViews) {
+            currentCount = totalViews;
+            clearInterval(counterInterval);
+        }
+        // Format angka dengan titik (contoh: 1.251)
+        countElement.innerText = currentCount.toLocaleString('id-ID');
+    }, 30);
+});
 
-            <a href="#" class="card card-admin" onclick="bukaLink('admin2', event)">
-                <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
-                <div class="card-content">
-                    <div class="card-title">Hubungi Admin 2</div>
-                    <div class="card-desc">Pusat bantuan alternatif</div>
-                </div>
-                <div class="arrow"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 14px;"></i></div>
-            </a>
-        </div>
-
-        <div class="footer">
-            Sistem Informasi Pendaftaran Anggota BEM KEMA POLSUB © 2026 <span>BEM KEMA POLSUB</span>
-        </div>
-
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+// (Pastikan fungsi bukaLink() Anda yang sebelumnya tetap ada di bawah ini)
