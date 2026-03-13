@@ -11,7 +11,7 @@ function bukaLink(tujuan, event) {
     } else if (tujuan === 'admin2') {
         url = "https://wa.me/6281804495792?text=Halo%20Admin%202,%20saya%20ingin%20bertanya%20seputar%20Oprec%20BEM.";
     } else if (tujuan === 'ig') {
-        url = "https://www.instagram.com/bemkema.polsub?igsh=MThsZmV5aDVud3FhaQ=="
+        url = "https://www.instagram.com/bemkema.polsub?igsh=MThsZmV5aDVud3FhaQ==";
 }
     if (url !== "" && !url.includes("MASUKKAN_LINK")) {
         window.open(url, '_blank');
