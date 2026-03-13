@@ -18,37 +18,27 @@ function bukaLink(tujuan, event) {
     } else {
         alert("Tautan belum disetting panitia.");
     }
-} // <-- Kurung kurawal ini yang sebelumnya salah tempat
+}
 
-// --- LOGIKA VISITOR COUNTER (Simulasi Front-End) ---
+// --- LOGIKA VISITOR COUNTER ---
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("view-count");
     
-    // Pastikan elemennya ada di HTML sebelum menjalankan animasi
     if (countElement) {
-        // Angka dasar fiktif agar tidak mulai dari 0
         const baseCount = 1250; 
-
-        // Mengecek apakah pengunjung ini sudah pernah membuka web sebelumnya
         let localVisits = localStorage.getItem("bem_page_views");
 
         if (localVisits) {
-            // Jika sudah pernah, tambah 1
             localVisits = parseInt(localVisits) + 1;
         } else {
-            // Jika baru pertama kali buka, mulai dari 1
             localVisits = 1; 
         }
 
-        // Simpan kembali ke penyimpanan browser
         localStorage.setItem("bem_page_views", localVisits);
 
-        // Hitung total (Angka Dasar + Kunjungan Lokal)
         const totalViews = baseCount + localVisits;
-
-        // Animasi angka berjalan (Count Up Animation)
         let currentCount = baseCount;
-        const duration = 1500; // Waktu animasi 1.5 detik
+        const duration = 1500; 
         const increment = Math.ceil(localVisits / (duration / 30));
 
         const counterInterval = setInterval(() => {
@@ -57,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentCount = totalViews;
                 clearInterval(counterInterval);
             }
-            // Format angka dengan titik (contoh: 1.251)
             countElement.innerText = currentCount.toLocaleString('id-ID');
         }, 30);
     }
