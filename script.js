@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!countElement) return;
 
     // Angka dasar fiktif agar tidak mulai dari 0
-    const baseCount = 1250; 
+    const baseCount = 0; 
 
     // Mengecek apakah pengunjung ini sudah pernah membuka web sebelumnya
     let localVisits = localStorage.getItem("bem_page_views");
