@@ -1,3 +1,6 @@
+// ==========================================
+// 1. FUNGSI UNTUK MEMBUKA LINK
+// ==========================================
 function bukaLink(tujuan, event) {
     event.preventDefault(); 
     let url = "";
@@ -12,17 +15,26 @@ function bukaLink(tujuan, event) {
         url = "https://wa.me/6281804495792?text=Halo%20Admin%202,%20saya%20ingin%20bertanya%20seputar%20Oprec%20BEM.";
     } else if (tujuan === 'ig') {
         url = "https://www.instagram.com/bemkema.polsub?igsh=MThsZmV5aDVud3FhaQ==";
-}
+    }
+
     if (url !== "" && !url.includes("MASUKKAN_LINK")) {
         window.open(url, '_blank');
     } else {
         alert("Tautan belum disetting panitia.");
     }
-    // --- LOGIKA VISITOR COUNTER (Simulasi Front-End) ---
+}
+
+// ==========================================
+// 2. LOGIKA VISITOR COUNTER (Simulasi Front-End)
+// ==========================================
+// Diletakkan di LUAR fungsi bukaLink agar langsung tereksekusi saat web dimuat
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("view-count");
     
-    // Angka dasar fiktif agar tidak mulai dari 0 (bisa Anda ubah)
+    // Pengaman: Jika tidak ada elemen dengan id "view-count" di HTML, hentikan fungsi agar tidak error
+    if (!countElement) return;
+
+    // Angka dasar fiktif agar tidak mulai dari 0
     const baseCount = 1250; 
 
     // Mengecek apakah pengunjung ini sudah pernah membuka web sebelumnya
@@ -45,7 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Animasi angka berjalan (Count Up Animation)
     let currentCount = baseCount;
     const duration = 1500; // 1.5 detik
-    const increment = Math.ceil(localVisits / (duration / 30));
+    
+    // Pastikan increment minimal 1 agar animasi tidak macet (Math.max)
+    const increment = Math.max(1, Math.ceil(localVisits / (duration / 30)));
 
     const counterInterval = setInterval(() => {
         currentCount += increment;
@@ -57,6 +71,3 @@ document.addEventListener("DOMContentLoaded", () => {
         countElement.innerText = currentCount.toLocaleString('id-ID');
     }, 30);
 });
-
-// (Pastikan fungsi bukaLink() Anda yang sebelumnya tetap ada di bawah ini)
-}
