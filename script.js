@@ -1,6 +1,3 @@
-// ==========================================
-// 1. FUNGSI UNTUK MEMBUKA LINK
-// ==========================================
 function bukaLink(tujuan, event) {
     event.preventDefault(); 
     let url = "";
@@ -13,29 +10,22 @@ function bukaLink(tujuan, event) {
         url = "https://wa.me/6285692627679?text=Halo%20Admin%201,%20saya%20ingin%20bertanya%20seputar%20Oprec%20BEM.";
     } else if (tujuan === 'admin2') {
         url = "https://wa.me/6281804495792?text=Halo%20Admin%202,%20saya%20ingin%20bertanya%20seputar%20Oprec%20BEM.";
+    } else if (tujuan === 'grupwa') { // ---> TAMBAHKAN BAGIAN INI
+        url = "https://chat.whatsapp.com/BGCtk0A0nlZICvEs70mQRK?mode=gi_t"; 
     } else if (tujuan === 'ig') {
         url = "https://www.instagram.com/bemkema.polsub?igsh=MThsZmV5aDVud3FhaQ==";
     }
-
     if (url !== "" && !url.includes("MASUKKAN_LINK")) {
         window.open(url, '_blank');
     } else {
         alert("Tautan belum disetting panitia.");
     }
-}
-
-// ==========================================
-// 2. LOGIKA VISITOR COUNTER (Simulasi Front-End)
-// ==========================================
-// Diletakkan di LUAR fungsi bukaLink agar langsung tereksekusi saat web dimuat
+    // --- LOGIKA VISITOR COUNTER (Simulasi Front-End) ---
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("view-count");
     
-    // Pengaman: Jika tidak ada elemen dengan id "view-count" di HTML, hentikan fungsi agar tidak error
-    if (!countElement) return;
-
-    // Angka dasar fiktif agar tidak mulai dari 0
-    const baseCount = 0; 
+    // Angka dasar fiktif agar tidak mulai dari 0 (bisa Anda ubah)
+    const baseCount = 1250; 
 
     // Mengecek apakah pengunjung ini sudah pernah membuka web sebelumnya
     let localVisits = localStorage.getItem("bem_page_views");
@@ -57,9 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Animasi angka berjalan (Count Up Animation)
     let currentCount = baseCount;
     const duration = 1500; // 1.5 detik
-    
-    // Pastikan increment minimal 1 agar animasi tidak macet (Math.max)
-    const increment = Math.max(1, Math.ceil(localVisits / (duration / 30)));
+    const increment = Math.ceil(localVisits / (duration / 30));
 
     const counterInterval = setInterval(() => {
         currentCount += increment;
@@ -71,3 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
         countElement.innerText = currentCount.toLocaleString('id-ID');
     }, 30);
 });
+
+// (Pastikan fungsi bukaLink() Anda yang sebelumnya tetap ada di bawah ini)
+}
