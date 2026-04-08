@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     if (!countElement) return;
 
-    const baseCount = 1250; 
+    const baseCount = 1; 
     
     // Saya ganti nama key-nya jadi "bem_views_2026" untuk mereset memori browser kamu
     // kalau-kalau sebelumnya sempat error dan menyimpan nilai "NaN" (Not a Number)
