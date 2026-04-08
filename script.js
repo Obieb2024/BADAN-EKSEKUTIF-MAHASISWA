@@ -1,3 +1,6 @@
+// ==========================================
+// 1. FUNGSI UNTUK MEMBUKA LINK
+// ==========================================
 function bukaLink(tujuan, event) {
     event.preventDefault(); 
     let url = "";
@@ -10,44 +13,45 @@ function bukaLink(tujuan, event) {
         url = "https://wa.me/6285692627679?text=Halo%20Admin%201,%20saya%20ingin%20bertanya%20seputar%20Oprec%20BEM.";
     } else if (tujuan === 'admin2') {
         url = "https://wa.me/6281804495792?text=Halo%20Admin%202,%20saya%20ingin%20bertanya%20seputar%20Oprec%20BEM.";
-    } else if (tujuan === 'grupwa') { // ---> TAMBAHKAN BAGIAN INI
+    } else if (tujuan === 'grupwa') { 
         url = "https://chat.whatsapp.com/BGCtk0A0nlZICvEs70mQRK?mode=gi_t"; 
     } else if (tujuan === 'ig') {
         url = "https://www.instagram.com/bemkema.polsub?igsh=MThsZmV5aDVud3FhaQ==";
     }
+
     if (url !== "" && !url.includes("MASUKKAN_LINK")) {
         window.open(url, '_blank');
     } else {
         alert("Tautan belum disetting panitia.");
     }
-    // --- LOGIKA VISITOR COUNTER (Simulasi Front-End) ---
+}
+
+// ==========================================
+// 2. LOGIKA VISITOR COUNTER (Simulasi Front-End)
+// ==========================================
+// Taruh di luar fungsi bukaLink agar langsung berjalan saat web dibuka
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("view-count");
     
-    // Angka dasar fiktif agar tidak mulai dari 0 (bisa Anda ubah)
-    const baseCount = 1250; 
+    if (!countElement) return; // Mencegah error jika elemen tidak ditemukan di HTML
 
-    // Mengecek apakah pengunjung ini sudah pernah membuka web sebelumnya
+    const baseCount = 1250; 
     let localVisits = localStorage.getItem("bem_page_views");
 
     if (localVisits) {
-        // Jika sudah pernah, tambah 1
         localVisits = parseInt(localVisits) + 1;
     } else {
-        // Jika baru pertama kali buka, mulai dari 1
         localVisits = 1; 
     }
 
-    // Simpan kembali ke penyimpanan browser
     localStorage.setItem("bem_page_views", localVisits);
 
-    // Hitung total (Angka Dasar + Kunjungan Lokal)
     const totalViews = baseCount + localVisits;
 
-    // Animasi angka berjalan (Count Up Animation)
     let currentCount = baseCount;
-    const duration = 1500; // 1.5 detik
-    const increment = Math.ceil(localVisits / (duration / 30));
+    const duration = 1500; 
+    // Mencegah increment menjadi 0 atau Infinity jika perhitungan terlalu kecil
+    const increment = Math.max(1, Math.ceil(localVisits / (duration / 30)));
 
     const counterInterval = setInterval(() => {
         currentCount += increment;
@@ -55,10 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
             currentCount = totalViews;
             clearInterval(counterInterval);
         }
-        // Format angka dengan titik (contoh: 1.251)
         countElement.innerText = currentCount.toLocaleString('id-ID');
     }, 30);
 });
-
-// (Pastikan fungsi bukaLink() Anda yang sebelumnya tetap ada di bawah ini)
-}
