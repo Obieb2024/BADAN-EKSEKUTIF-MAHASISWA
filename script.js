@@ -27,16 +27,18 @@ function bukaLink(tujuan, event) {
 }
 
 // ==========================================
-// 2. LOGIKA VISITOR COUNTER (Simulasi Front-End)
+// 2. LOGIKA VISITOR COUNTER
 // ==========================================
-// Taruh di luar fungsi bukaLink agar langsung berjalan saat web dibuka
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("view-count");
     
-    if (!countElement) return; // Mencegah error jika elemen tidak ditemukan di HTML
+    if (!countElement) return;
 
     const baseCount = 1250; 
-    let localVisits = localStorage.getItem("bem_page_views");
+    
+    // Saya ganti nama key-nya jadi "bem_views_2026" untuk mereset memori browser kamu
+    // kalau-kalau sebelumnya sempat error dan menyimpan nilai "NaN" (Not a Number)
+    let localVisits = localStorage.getItem("bem_views_2026");
 
     if (localVisits) {
         localVisits = parseInt(localVisits) + 1;
@@ -44,13 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
         localVisits = 1; 
     }
 
-    localStorage.setItem("bem_page_views", localVisits);
+    localStorage.setItem("bem_views_2026", localVisits);
 
     const totalViews = baseCount + localVisits;
 
     let currentCount = baseCount;
     const duration = 1500; 
-    // Mencegah increment menjadi 0 atau Infinity jika perhitungan terlalu kecil
     const increment = Math.max(1, Math.ceil(localVisits / (duration / 30)));
 
     const counterInterval = setInterval(() => {
